@@ -6,8 +6,6 @@ use warnings;
 use HTML::TreeBuilder;
 use File::Copy;
 
-use Data::Dumper;
-
 my $nonfield_dir =  "data/primate_jobs/nonfield/";
 mkdir $nonfield_dir;
 
@@ -17,10 +15,10 @@ for (my $i = 1; $i <= 9999; $i++) {
     
     # Skip if job doesn't exist
     if (! -e $filename) {
-    	next;
+        next;
     }
 
-	print "--- $i ---\n";
+    print "--- $i ---\n";
 
     my $html = HTML::TreeBuilder->new;
     my $root = $html->parse_file($filename);
@@ -63,7 +61,7 @@ for (my $i = 1; $i <= 9999; $i++) {
         my $new_filename = $nonfield_dir . $i . ".html";
         
         move($filename, $new_filename) 
-        	or die "ERROR: Could not move HTML file to $nonfield_dir: $!\n";
+            or die "ERROR: Could not move HTML file to $nonfield_dir: $!\n";
     }
     
 }
